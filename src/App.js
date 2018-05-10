@@ -4,11 +4,15 @@ import React, { Component } from 'react';
 import './css/App.css';
 
 //component import
+// import Menu from "./components/Menu";
+
+
 
 class App extends Component {
 
   state = {
-    projects: []
+    projects: [],
+    links: []
   }
 
   componentDidMount() {
@@ -19,33 +23,51 @@ class App extends Component {
       this.setState({
         projects:response
       })
-    })
-  }
-  render() {
-  
+    });
 
+
+    let linkURL = "http://apiwordpress.cba.pl/wp-json/wp/v2/pages";
+    fetch(linkURL)
+    .then(response => response.json())
+    .then(response => {
+      this.setState({
+        links:response
+      })
+    });
+
+  }
+
+
+
+  render() {
+    
+    let stripHTML = (text) =>{
+      return text.replace(/<.*?>/gm, '');
+    }
     let projects =this.state.projects.map((project, index) => {
-   
-      function stripHTML(text) {
-        return text.replace(/<.*?>/gm, '');
-       }
      let text =  stripHTML(project.content.rendered);
-       
-     
       return (
         <div key={index}> 
           <h1>{project.title.rendered}</h1>
           
           <p>{text} </p>
-        </div>
-        
+        </div> 
+      );      
+    });
+
+    let links =this.state.links.map((link, index) => {    
+      return (               
+          <div key={index}>
+          {link.title.rendered} 
+          </div>
       );
-     
-            
-    })
+    });
+
     return (
       <div className="App">
-      
+
+      {links}
+
        {projects}
       </div>
     );//end return
