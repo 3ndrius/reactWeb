@@ -36,14 +36,11 @@ class App extends Component {
     });
 
   }
-
-
-
   render() {
-    
     let stripHTML = (text) =>{
       return text.replace(/<.*?>/gm, '');
-    }
+    }// end fn
+    
     let projects =this.state.projects.map((project, index) => {
      let text =  stripHTML(project.content.rendered);
       return (
