@@ -7,7 +7,6 @@ import './css/App.css';
 // import Menu from "./components/Menu";
 
 
-
 class App extends Component {
 
   state = {
@@ -24,8 +23,6 @@ class App extends Component {
         projects:response
       })
     });
-
-
     let linkURL = "http://apiwordpress.cba.pl/wp-json/wp/v2/pages";
     fetch(linkURL)
     .then(response => response.json())
@@ -34,13 +31,12 @@ class App extends Component {
         links:response
       })
     });
-
   }
   render() {
     let stripHTML = (text) =>{
       return text.replace(/<.*?>/gm, '');
-    }// end fn
-    
+    }// end fn (get rid "" from response json element)
+
     let projects =this.state.projects.map((project, index) => {
      let text =  stripHTML(project.content.rendered);
       return (
@@ -50,20 +46,20 @@ class App extends Component {
           <p>{text} </p>
         </div> 
       );      
-    });
-
+    });//end fn
     let links =this.state.links.map((link, index) => {    
       return (               
-          <div key={index}>
+          <li key={index}>
           {link.title.rendered} 
-          </div>
+          </li>
       );
     });
-
     return (
       <div className="App">
 
-      {links}
+      <ul className="menu">
+       {links}
+      </ul>
 
        {projects}
       </div>
