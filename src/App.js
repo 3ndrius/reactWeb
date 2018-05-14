@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './css/App.css';
 
 //component import
-// import Menu from "./components/Menu";
+import Menu from "./components/Menu";
 
 
 class App extends Component {
@@ -47,18 +47,12 @@ class App extends Component {
         </div> 
       );      
     });//end fn
-    let links =this.state.links.map((link, index) => {    
-      return (               
-          <li key={index}>
-          {link.title.rendered} 
-          </li>
-      );
-    });
+ 
+    
     return (
       <div className="App">
-
       <ul className="menu">
-       {links}
+       {this.props.links}
       </ul>
 
        {projects}
