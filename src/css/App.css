@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  
+
 }
 
 .App-logo {
@@ -31,4 +33,10 @@
   list-style-type: none;
   display: inline-block;
   padding:5px;
+}
+.content-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
 }

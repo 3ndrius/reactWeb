@@ -41,7 +41,7 @@ class App extends Component {
     let projects =this.state.projects.map((project, index) => {
      let text =  stripHTML(project.content.rendered);
       return (
-        <div key={index}> 
+        <div className="item" key={index}> 
           <h1>{project.title.rendered}</h1>
           
           <p>{text} </p>
@@ -62,7 +62,14 @@ class App extends Component {
       {links}
       </ul>
 
-       {projects}
+       <div className="content-grid">  {projects}
+       
+       <div>{} </div>
+    
+       </div>
+       
+      
+      
       </div>
     );//end return
 
