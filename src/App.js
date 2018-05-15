@@ -31,7 +31,8 @@ class App extends Component {
         links:response
       })
     });
-  }
+  }//end fn did mount
+
   render() {
     let stripHTML = (text) =>{
       return text.replace(/<.*?>/gm, '');
@@ -48,11 +49,17 @@ class App extends Component {
       );      
     });//end fn
  
+    let links =this.state.links.map((link, index) => {    
+      return (               
+          <Menu key={index} link={link}/>
+      );
+    });
+
     
     return (
       <div className="App">
       <ul className="menu">
-       {this.props.links}
+      {links}
       </ul>
 
        {projects}
