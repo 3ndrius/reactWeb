@@ -80,7 +80,7 @@ class App extends Component {
        <div className="content-grid"> 
         {projects}
        </div>
-       <div className="tags"> <h2> Tagi </h2>
+       <div className="tags"> <h2> Tagi  </h2>
        <Tags tags={this.state.tags}/>
        </div>
        
