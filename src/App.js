@@ -48,23 +48,16 @@ class App extends Component {
         </div> 
       );      
     });//end fn
- 
-    let links =this.state.links.map((link, index) => {    
-      return (               
-          <Menu key={index} link={link}/>
-      );
-    });
-
-    
+     
     return (
       <div className="App">
       <ul className="menu">
-      {links}
+      <Menu links={this.state.links} />
       </ul>
 
        <div className="content-grid">  {projects}
        
-       <div>{} </div>
+       <div> </div>
     
        </div>
        

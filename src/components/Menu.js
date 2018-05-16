@@ -4,8 +4,14 @@ class Menu extends React.Component {
 
     render() {
 
+      let links =this.props.links.map((link, index) => {    
+        return (               
+            <li key={index}>{link.title.rendered} </li>
+        );
+      });
+
   return(
-    <li> {this.props.link.title.rendered}  </li>
+   <ul> {links} </ul>
   )
 
     }
