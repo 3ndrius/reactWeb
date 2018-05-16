@@ -1,7 +1,15 @@
 .App {
   text-align: center;
-  
+  display:grid;
+  grid-template-rows: 1fr 3fr;
+  grid-template-columns: 2fr 1fr;
+  padding:3%;
+  grid-gap:10px;
 
+}
+.menu{
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .App-logo {
@@ -36,7 +44,20 @@
 }
 .content-grid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+
+}
+.tags{
+  padding: 10px;
+}
+.tags ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 4px 7px;
+  margin:5px;
+  color:rgb(247, 244, 244);
+  background-color: rgb(94, 199, 199);
+  border-radius: 20px;
 
 }
