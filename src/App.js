@@ -50,17 +50,27 @@ class App extends Component {
       return text.replace(/<.*?>/gm, '');
     }// end fn (get rid "" from response json element)
 
+    const lengPar = str => {
+      return(
+        str.length
+      );
+    }
+
     let projects =this.state.projects.map((project, index) => {
      let text =  stripHTML(project.content.rendered);
+    
+    const res =  text.slice(0, 600);
+
+     console.log(lengPar(text), res);
       return (
         <div className="item" key={index}> 
           <h1>{project.title.rendered}</h1>
           
-          <p>{text} </p>
+          <p>{ lengPar(text) > 600 ? res+ "..." : text } </p>
         </div> 
       );      
     });//end fn
-     
+   
     return (
       <div className="App">
       <div className="menu">
