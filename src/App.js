@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let projetUrl = "http://apiwordpress.cba.pl/wp-json/wp/v2/posts";
+    let projetUrl = "http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=8";
     fetch(projetUrl)
     .then(response => response.json())
     .then(response => {
@@ -35,7 +35,7 @@ class App extends Component {
       })
     });
 
-    let tagsURL = "http://apiwordpress.cba.pl/wp-json/wp/v2/tags";
+    let tagsURL = "http://apiwordpress.cba.pl/wp-json/wp/v2/tags?per_page=100";
     fetch(tagsURL)
     .then(response => response.json())
     .then(response => {
@@ -57,13 +57,16 @@ class App extends Component {
     }
 
     let projects =this.state.projects.map((project, index) => {
-     let text =  stripHTML(project.content.rendered);
     
+     let text =  stripHTML(project.content.rendered);
+   
     const res =  text.slice(0, 600);
+  
 
     //  console.log(lengPar(text), res);
       return (
         <div className="item" key={index}> 
+      
           <h1>{project.title.rendered}</h1>
           
           <p>{ lengPar(text) > 600 ? res+ "..." : text } </p>
@@ -76,7 +79,9 @@ class App extends Component {
       <div className="menu">
       <Menu links={this.state.links} />
       </div>
-      <div className="slider">hele </div>
+      <div className="slider">
+      
+       </div>
 
     <div className="wrapper"> 
     <div className="content-grid"> 
