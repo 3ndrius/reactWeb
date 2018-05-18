@@ -61,7 +61,7 @@ class App extends Component {
     
     const res =  text.slice(0, 600);
 
-     console.log(lengPar(text), res);
+    //  console.log(lengPar(text), res);
       return (
         <div className="item" key={index}> 
           <h1>{project.title.rendered}</h1>
@@ -76,14 +76,16 @@ class App extends Component {
       <div className="menu">
       <Menu links={this.state.links} />
       </div>
+      <div className="slider">hele </div>
 
-       <div className="content-grid"> 
+    <div className="wrapper"> 
+    <div className="content-grid"> 
         {projects}
        </div>
        <div className="tags"> <h2> Tagi  </h2>
        <Tags tags={this.state.tags}/>
        </div>
-       
+       </div>
       
       
       </div>
