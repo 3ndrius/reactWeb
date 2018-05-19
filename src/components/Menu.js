@@ -5,6 +5,7 @@ import React from 'react';
       let links =props.links.map((link, index) => {    
         return (               
             <li key={index}>{link.title.rendered} </li>
+           
         );
       });
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700'); */
 
 body {
   background-color: #f2f2f2;
@@ -12,6 +12,7 @@ body {
 .App{
   margin:0;
   padding: 0;
+
 }
 
 .wrapper{
@@ -153,5 +154,8 @@ list-style-type: none;
   text-justify: center;
   border-radius: 20px;
   border:none;
- 
+  color:white;
+  background-color: #6bcbcb;
+  cursor: pointer;
+  font-size:20px;
 }

@@ -14,19 +14,12 @@ class App extends Component {
     projects: [],
     links: [],
     tags: [],
-    count: 8
+    count: 8,
+    x: 0
   }
 
-  componentDidMount() {
-    let projetUrl = "http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=4";
-    fetch(projetUrl)
-    .then(response => response.json())
-    .then(response => {
-      this.setState({
-        projects:response
-      })
-    });
-
+  
+  componentWillMount() {
     let linkURL = "http://apiwordpress.cba.pl/wp-json/wp/v2/pages";
     fetch(linkURL)
     .then(response => response.json())
@@ -45,6 +38,29 @@ class App extends Component {
       })
     });
   }//end fn did mount
+  
+  componentDidMount() {
+    let projetUrl = "http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=4";
+    fetch(projetUrl)
+    .then(response => response.json())
+    .then(response => {
+      this.setState({
+        projects:response
+      })
+    });
+  }
+
+
+  onScrollEvent = (e) => {
+  
+     
+        console.log( e);
+  }
+    
+
+
+
+
 
   onClickBtn = () =>{
     let projetUrl = `http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=${this.state.count}`;
@@ -88,7 +104,7 @@ class App extends Component {
     });//end fn
    
     return (
-      <div className="App">
+      <div className="App" onScroll={this.onScrollEvent}>
       <div className="menu">
       <Menu links={this.state.links} />
       </div>
