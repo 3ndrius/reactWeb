@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+
+
 //css import
 import './css/App.css';
 
@@ -15,7 +17,7 @@ class App extends Component {
     links: [],
     tags: [],
     count: 8,
-    x: 0
+    
   }
 
   
@@ -51,10 +53,10 @@ class App extends Component {
   }
 
 
-  onScrollEvent = (e) => {
-  
+  handleScrollCallback = () => {
+    
+  console.log("Scroll occured");
      
-        console.log( e);
   }
     
 
@@ -91,7 +93,9 @@ class App extends Component {
    
     const res =  text.slice(0, 600);
   
-
+//       window.onscroll = function() {
+//     console.log('scrolling');
+// };
     //  console.log(lengPar(text), res);
       return (
         <div className="item" key={index}> 
@@ -104,7 +108,7 @@ class App extends Component {
     });//end fn
    
     return (
-      <div className="App" onScroll={this.onScrollEvent}>
+      <div className="App" >
       <div className="menu">
       <Menu links={this.state.links} />
       </div>
