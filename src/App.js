@@ -53,11 +53,18 @@ class App extends Component {
   }
 
 
-  handleScrollCallback = () => {
+  // handleScrollCallback = (e) => {
+  //  let bodys = document.body.clientHeight
     
-  console.log("Scroll occured");
+  // console.log("Wheel occured" ,document.documentElement.scrollTop,window.innerHeight, bodys);
+ 
+  // if(document.documentElement.scrollTop + window.innerHeight === bodys){
+  //   this.onClickBtn();
+  // }
+
+
      
-  }
+  // }
     
 
 
@@ -92,10 +99,32 @@ class App extends Component {
      let text =  stripHTML(project.content.rendered);
    
     const res =  text.slice(0, 600);
+ 
+
+
   
-//       window.onscroll = function() {
-//     console.log('scrolling');
-// };
+      window.onscroll = () => {
+        let bodys = document.body.clientHeight
+    
+        console.log("Wheel occured" ,document.documentElement.scrollTop,window.innerHeight, bodys);
+       
+        if(document.documentElement.scrollTop + window.innerHeight === bodys){
+          let projetUrl = `http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=${this.state.count}`;
+    fetch(projetUrl)
+    .then(response => response.json())
+    .then(response => {
+      this.setState({
+        projects:response,
+        count:this.state.count+4
+      })
+    });
+        
+        }
+};
+
+
+
+
     //  console.log(lengPar(text), res);
       return (
         <div className="item" key={index}> 
@@ -108,7 +137,7 @@ class App extends Component {
     });//end fn
    
     return (
-      <div className="App" >
+      <div className="App" onWheel={this.handleScrollCallback}>
       <div className="menu">
       <Menu links={this.state.links} />
       </div>
