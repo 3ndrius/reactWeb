@@ -138,3 +138,20 @@ list-style-type: none;
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
 }
+.btn-wrap{
+
+  height: 140px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-more{
+  
+  padding: 20px 100px;
+  text-justify: center;
+  border-radius: 20px;
+  border:none;
+ 
+}

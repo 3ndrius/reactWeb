@@ -13,11 +13,12 @@ class App extends Component {
   state = {
     projects: [],
     links: [],
-    tags: []
+    tags: [],
+    count: 8
   }
 
   componentDidMount() {
-    let projetUrl = "http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=8";
+    let projetUrl = "http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=4";
     fetch(projetUrl)
     .then(response => response.json())
     .then(response => {
@@ -45,6 +46,18 @@ class App extends Component {
     });
   }//end fn did mount
 
+  onClickBtn = () =>{
+    let projetUrl = `http://apiwordpress.cba.pl/wp-json/wp/v2/posts?per_page=${this.state.count}`;
+    fetch(projetUrl)
+    .then(response => response.json())
+    .then(response => {
+      this.setState({
+        projects:response,
+        count:this.state.count+4
+      })
+    });
+  }
+
   render() {
     let stripHTML = (text) =>{
       return text.replace(/<.*?>/gm, '');
@@ -55,7 +68,7 @@ class App extends Component {
         str.length
       );
     }
-
+    console.log(this.state.count);
     let projects =this.state.projects.map((project, index) => {
     
      let text =  stripHTML(project.content.rendered);
@@ -90,6 +103,9 @@ class App extends Component {
        <div className="tags"> <h2> Tagi  </h2>
        <Tags tags={this.state.tags}/>
        </div>
+       <div className="btn-wrap">
+      <button onClick={this.onClickBtn} className="btn-more"> Load More</button>
+      </div>
        </div>
       
       
