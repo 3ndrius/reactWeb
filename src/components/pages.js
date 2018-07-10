@@ -1,13 +1,9 @@
-//pages
+import React from 'react';
 
-export default pages = () => {
+ export default (props) =>  {
 
-    render() {
-
-        return(
-            <h1> Home </h1>
-        )
-        
-        
-    }
+  return(
+  <div> Hello </div>
+  );
 }
+
