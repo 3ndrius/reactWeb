@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
-
+import {Link} from "react-router-dom";
 
 
 //css import
@@ -40,6 +40,9 @@ class App extends Component {
         tags:response
       })
     });
+
+
+     
   }//end fn did mount
   
   componentDidMount() {
@@ -51,6 +54,12 @@ class App extends Component {
         projects:response
       })
     });
+    
+  
+  }
+  componentDidUpdate = () => {
+    const proj = JSON.stringify(this.state.projects);
+    localStorage.setItem("proj", proj);
   }
 
   onClickBtn = () =>{
@@ -82,6 +91,7 @@ class App extends Component {
    
     const res =  text.slice(0, 600);
  
+    
 
 
   
@@ -114,11 +124,19 @@ class App extends Component {
           <h1>{project.title.rendered}</h1>
           
           <p>{ lengPar(text) > 600 ? res+ "..." : text } </p>
+          <button className="btn">
+                  <Link to={{
+                    pathname: `/single/${project.id}`,
+                    state: {project: project.id}
+                    }}> View Recipe </Link>
+                </button>
         </div> 
+        
       );      
     });//end fn
    
     return (
+      
       <div className="App">
       <div className="menu">
       <Menu links={this.state.links} />
@@ -131,6 +149,7 @@ class App extends Component {
     <div className="wrapper"> 
     <div className="content-grid"> 
         {projects}
+       
        </div>
        <div className="tags"> <h2> Tagi  </h2>
        <Tags tags={this.state.tags}/>
@@ -139,7 +158,7 @@ class App extends Component {
       <button onClick={this.onClickBtn} className="btn-more"> Load More</button>
       </div>
        </div>
-      
+   
       
       </div>
     );//end return
